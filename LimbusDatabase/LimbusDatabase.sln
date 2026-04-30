@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36327.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimbusDatabase", "LimbusDatabase.csproj", "{D39FBE16-3428-4421-BF33-B40FE4EA3C16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D39FBE16-3428-4421-BF33-B40FE4EA3C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39FBE16-3428-4421-BF33-B40FE4EA3C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39FBE16-3428-4421-BF33-B40FE4EA3C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39FBE16-3428-4421-BF33-B40FE4EA3C16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9F6927E-1825-4C92-B2A7-B2C6DEB86092}
+	EndGlobalSection
+EndGlobal

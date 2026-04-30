@@ -30,6 +30,8 @@ public partial class LimbusDatabaseContext : DbContext
 
     public virtual DbSet<Personnage> Personnages { get; set; }
 
+    public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=LimbusDatabase");
 
@@ -125,6 +127,11 @@ public partial class LimbusDatabaseContext : DbContext
             entity.HasOne(d => d.Faction).WithMany(p => p.Personnages)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Personnage_FactionID");
+        });
+
+        modelBuilder.Entity<Utilisateur>(entity =>
+        {
+            entity.HasKey(e => e.UtilisateurId).HasName("PK_Utilisateur_UtilisateurID");
         });
 
         OnModelCreatingPartial(modelBuilder);

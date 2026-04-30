@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LimbusDatabase.Models.Personnage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnVie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Faction)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnVie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faction.Nom)
+            </td>
+            <td>
+                
+                <a asp-action="Details" asp-route-id="@item.PersonnageId">Details</a> |
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LimbusDatabase.Data;
 using LimbusDatabase.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Data.SqlClient;
+using LimbusDatabase.ViewModels;
 
 namespace LimbusDatabase.Controllers
 {
@@ -22,7 +25,7 @@ namespace LimbusDatabase.Controllers
         // GET: Personnages
         public async Task<IActionResult> Index()
         {
-            var limbusDatabaseContext = _context.Personnages.Include(x=>x.Faction);
+            var limbusDatabaseContext = _context.Personnages.Include(x => x.Faction);
             return View(await limbusDatabaseContext.ToListAsync());
         }
 
@@ -159,6 +162,27 @@ namespace LimbusDatabase.Controllers
         private bool PersonnageExists(int id)
         {
             return _context.Personnages.Any(e => e.PersonnageId == id);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> MortDeFactionDistrict(MortDeFactionDistrictViewModel vm)
+        {
+            string query = "EXEC Personnages.usp_MortDeFactionDistrict @FactionId, @District";
+            List<SqlParameter> parameters = new List<SqlParameter> {
+            new SqlParameter{ParameterName="@FactionId",Value=vm.FactionId},
+            new SqlParameter{ParameterName="@District",Value=vm.District}
+            };
+            await _context.Database.ExecuteSqlRawAsync(query, parameters.ToArray());
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+
+        public async Task<IActionResult> MortDeFactionDistrict()
+        {
+            return View();
         }
     }
 }

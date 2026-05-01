@@ -87,7 +87,7 @@ public partial class LimbusDatabaseContext : DbContext
 
         modelBuilder.Entity<Changelog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F8B0C0A9C");
+            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83FCEF5B3DF");
 
             entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
         });

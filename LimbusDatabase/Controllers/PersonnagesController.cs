@@ -184,5 +184,30 @@ namespace LimbusDatabase.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AjouterImage(ImageUploadViewModel iuvm)
+        {
+            if (ModelState.IsValid)
+            {
+                Personnage? personnage= await _context.Personnages.FirstOrDefaultAsync(x=>x.Prenom==iuvm.NomImage);
+                if (iuvm.FormFile!=null&&iuvm.FormFile.Length>=0)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    await iuvm.FormFile.CopyToAsync(stream);
+                    byte[] fichierImage= stream.ToArray();
+                    personnage.Photo = fichierImage;
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+        
+        public async Task<IActionResult> AjouterImage()
+        {
+            
+            return View();
+        }
     }
 }

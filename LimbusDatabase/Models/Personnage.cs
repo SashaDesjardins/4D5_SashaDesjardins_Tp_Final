@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace LimbusDatabase.Models;
 
 [Table("Personnage", Schema = "Personnages")]
+[Index("Identifiant", Name = "UC_Personnage_Identifiant", IsUnique = true)]
 public partial class Personnage
 {
     [Key]
@@ -27,6 +28,10 @@ public partial class Personnage
     public string District { get; set; } = null!;
 
     public bool EnVie { get; set; }
+
+    public Guid Identifiant { get; set; }
+
+    public byte[]? Photo { get; set; }
 
     [InverseProperty("Personnage")]
     public virtual ICollection<Equipement> Equipements { get; set; } = new List<Equipement>();

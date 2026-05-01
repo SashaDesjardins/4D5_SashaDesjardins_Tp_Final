@@ -122,6 +122,7 @@ public partial class LimbusDatabaseContext : DbContext
             entity.HasKey(e => e.PersonnageId).HasName("PK_Personnage_PersonnageID");
 
             entity.Property(e => e.District).IsFixedLength();
+            entity.Property(e => e.Identifiant).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Nom).HasDefaultValue("");
 
             entity.HasOne(d => d.Faction).WithMany(p => p.Personnages)

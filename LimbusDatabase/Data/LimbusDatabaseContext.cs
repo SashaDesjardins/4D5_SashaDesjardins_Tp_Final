@@ -32,6 +32,8 @@ public partial class LimbusDatabaseContext : DbContext
 
     public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
 
+    public virtual DbSet<VwIdentitesPersonnage> VwIdentitesPersonnages { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=LimbusDatabase");
 
@@ -87,7 +89,7 @@ public partial class LimbusDatabaseContext : DbContext
 
         modelBuilder.Entity<Changelog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83FCEF5B3DF");
+            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F782B72D7");
 
             entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
         });
@@ -133,6 +135,11 @@ public partial class LimbusDatabaseContext : DbContext
         modelBuilder.Entity<Utilisateur>(entity =>
         {
             entity.HasKey(e => e.UtilisateurId).HasName("PK_Utilisateur_UtilisateurID");
+        });
+
+        modelBuilder.Entity<VwIdentitesPersonnage>(entity =>
+        {
+            entity.ToView("Vw_IdentitesPersonnages", "Personnages");
         });
 
         OnModelCreatingPartial(modelBuilder);

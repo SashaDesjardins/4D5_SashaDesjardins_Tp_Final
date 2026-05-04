@@ -1,0 +1,40 @@
+﻿@model IEnumerable<LimbusDatabase.Models.VwIdentitesPersonnage>
+
+@{
+    ViewData["Title"] = "Identités des damnées";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Identités des damnées</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                Nombre d'identités
+            </th>
+
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDIdentite)
+                </td>
+
+                
+            </tr>
+        }
+    </tbody>
+</table>

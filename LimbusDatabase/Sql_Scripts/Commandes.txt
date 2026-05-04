@@ -1,6 +1,6 @@
 
 --Migration
-evolve migrate sqlserver -c "Server=.;Initial Catalog=LimbusDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -s Personnages -s Anormalites --target-version 1.0
+evolve migrate sqlserver -c "Server=.;Initial Catalog=LimbusDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -s Personnages -s Anormalites -s Utilisateurs --target-version 1.0
 
 --scaffold 
 dotnet ef dbcontext scaffold Name=LimbusDatabase Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Data --context LimbusDatabaseContext --data-annotations --force

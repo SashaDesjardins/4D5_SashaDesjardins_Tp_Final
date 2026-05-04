@@ -209,5 +209,10 @@ namespace LimbusDatabase.Controllers
             
             return View();
         }
+
+        public async Task<IActionResult> PersonnagesNombreIdentite()
+        {
+            return View (await _context.VwIdentitesPersonnages.ToListAsync());
+        }
     }
 }

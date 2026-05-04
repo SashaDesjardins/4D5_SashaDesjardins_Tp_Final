@@ -44,8 +44,13 @@ namespace LimbusDatabase.Controllers
             {
                 return NotFound();
             }
-
-            return View(personnage);
+            string Image = null;
+            if (personnage.Photo != null)
+            {
+                Image = $"data:image/png;base64, {Convert.ToBase64String (personnage.Photo)}";
+            }
+            DetailViewModel dvm= new DetailViewModel { ImageUrl = Image ,Personnage=personnage};
+            return View(dvm);
         }
 
         // GET: Personnages/Create

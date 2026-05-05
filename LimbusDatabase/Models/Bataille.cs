@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace LimbusDatabase.Models;
 
 [Table("Bataille", Schema = "Anormalites")]
+[Index("BatailleId", Name = "IX_Bataille_BatailleId")]
 public partial class Bataille
 {
     [Key]

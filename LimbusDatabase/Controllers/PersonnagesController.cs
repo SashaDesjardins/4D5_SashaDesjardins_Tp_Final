@@ -220,5 +220,13 @@ namespace LimbusDatabase.Controllers
         {
             return View (await _context.VwIdentitesPersonnages.ToListAsync());
         }
+
+        public async Task<IActionResult> PersonnagesAnormalitesBatailles()
+        {
+            List<VwPersonnagesBataille> personnages= await _context.VwPersonnagesBatailles.AsQueryable().ToListAsync();
+            List<VwAnormaliteBataille> anormalites = await _context.VwAnormaliteBatailles.AsQueryable().ToListAsync();
+            PersonnagesAnormalitesBataillesViewModel  pabvm = new PersonnagesAnormalitesBataillesViewModel() { PersonnagesBatailles=personnages,AnormaliteBatailles=anormalites};
+            return View(pabvm);
+        }
     }
 }

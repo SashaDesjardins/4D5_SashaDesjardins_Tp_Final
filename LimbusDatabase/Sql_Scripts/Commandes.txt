@@ -5,3 +5,5 @@ evolve migrate sqlserver -c "Server=.;Initial Catalog=LimbusDatabase;Integrated 
 --scaffold 
 dotnet ef dbcontext scaffold Name=LimbusDatabase Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Data --context LimbusDatabaseContext --data-annotations --force
 
+--Mise a jour de Evolve
+dotnet tool update evolve.tool -g --prerelease

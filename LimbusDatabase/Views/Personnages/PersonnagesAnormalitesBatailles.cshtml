@@ -1,0 +1,74 @@
+﻿@model LimbusDatabase.ViewModels.PersonnagesAnormalitesBataillesViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Personnages</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Nom
+            </th>
+
+            <th>
+                Nombre de participations
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PersonnagesBatailles)
+        {
+            <tr>
+
+                <td>
+                    @(item.Nom)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDeParticipations)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+<h1>Anormalités</h1>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Nom
+            </th>
+
+            <th>
+                Nombre de participations
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AnormaliteBatailles)
+        {
+            <tr>
+
+                <td>
+                    @(item.Nom)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDeParticipations)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

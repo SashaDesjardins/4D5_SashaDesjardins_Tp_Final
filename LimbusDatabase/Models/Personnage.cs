@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace LimbusDatabase.Models;
 
 [Table("Personnage", Schema = "Personnages")]
+[Index("PersonnageId", Name = "IX_Personnage_PersonnageID")]
 [Index("Identifiant", Name = "UC_Personnage_Identifiant", IsUnique = true)]
 public partial class Personnage
 {

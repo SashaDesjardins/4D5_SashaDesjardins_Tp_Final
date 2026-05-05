@@ -32,7 +32,11 @@ public partial class LimbusDatabaseContext : DbContext
 
     public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
 
+    public virtual DbSet<VwAnormaliteBataille> VwAnormaliteBatailles { get; set; }
+
     public virtual DbSet<VwIdentitesPersonnage> VwIdentitesPersonnages { get; set; }
+
+    public virtual DbSet<VwPersonnagesBataille> VwPersonnagesBatailles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=LimbusDatabase");
@@ -89,7 +93,7 @@ public partial class LimbusDatabaseContext : DbContext
 
         modelBuilder.Entity<Changelog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F782B72D7");
+            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F8521CE49");
 
             entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
         });
@@ -137,9 +141,19 @@ public partial class LimbusDatabaseContext : DbContext
             entity.HasKey(e => e.UtilisateurId).HasName("PK_Utilisateur_UtilisateurID");
         });
 
+        modelBuilder.Entity<VwAnormaliteBataille>(entity =>
+        {
+            entity.ToView("Vw_AnormaliteBatailles", "Anormalites");
+        });
+
         modelBuilder.Entity<VwIdentitesPersonnage>(entity =>
         {
             entity.ToView("Vw_IdentitesPersonnages", "Personnages");
+        });
+
+        modelBuilder.Entity<VwPersonnagesBataille>(entity =>
+        {
+            entity.ToView("Vw_PersonnagesBatailles", "Anormalites");
         });
 
         OnModelCreatingPartial(modelBuilder);

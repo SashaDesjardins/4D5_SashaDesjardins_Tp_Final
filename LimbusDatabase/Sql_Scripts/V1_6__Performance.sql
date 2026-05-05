@@ -6,3 +6,4 @@ CREATE NONCLUSTERED INDEX IX_Personnage_PersonnageID ON Personnages.Personnage(P
 --la table Bataille est extensive et tout comme Personnage, est chargé en utilisant les Id des batailles
 
 CREATE NONCLUSTERED INDEX IX_Bataille_BatailleId ON Anormalites.Bataille(BatailleId)
+

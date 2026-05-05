@@ -41,8 +41,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Personnage.Faction.FactionId)
         </dd>
+        
+    </dl>
+    <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            Photo
         </dt>
         <dd class="col-sm-10">
             <img alt="@(Model.Personnage.Prenom)" src="@(Model.ImageUrl)"></img>

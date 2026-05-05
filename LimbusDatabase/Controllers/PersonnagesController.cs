@@ -189,13 +189,14 @@ namespace LimbusDatabase.Controllers
         {
             return View();
         }
-
+        [Route("Personnages/AjouterImage/{PersonnageId}")]
         [HttpPost]
-        public async Task<IActionResult> AjouterImage(ImageUploadViewModel iuvm)
+        public async Task<IActionResult> AjouterImage(ImageUploadViewModel iuvm,int PersonnageId)
         {
-            if (ModelState.IsValid)
+            Personnage? personnage = await _context.Personnages.FirstOrDefaultAsync(x => x.PersonnageId == PersonnageId);
+            if (ModelState.IsValid&& personnage!=null)
             {
-                Personnage? personnage= await _context.Personnages.FirstOrDefaultAsync(x=>x.Prenom==iuvm.NomImage);
+                
                 if (iuvm.FormFile!=null&&iuvm.FormFile.Length>=0)
                 {
                     MemoryStream stream = new MemoryStream();
@@ -209,10 +210,10 @@ namespace LimbusDatabase.Controllers
             return View();
         }
         
-        public async Task<IActionResult> AjouterImage()
+        public async Task<IActionResult> AjouterImage(int PersonnageId)
         {
-            
-            return View();
+           
+            return View(new ImageUploadViewModel() { PersonnageId=PersonnageId});
         }
 
         public async Task<IActionResult> PersonnagesNombreIdentite()
